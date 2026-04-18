@@ -1,0 +1,74 @@
+<header class="custom-header">
+    <div class="top-bar">
+        <div class="logo-section">
+            <i class="icon-flask"></i>
+            <div class="footer-widget__logo logo-retina">
+                <a href="index.html">
+                    <img src="assets/front/images/logo-light.png" alt="Mediox HTML" width="164">
+                </a>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item active">
+                <i class="icon-home"></i>
+                <a href="#">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <i class="icon-info"></i>
+                <a href="about.html">Qui Sommes Nous</a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="/contact">
+                    <i class="bx bx-chat"></i> Contact
+                </a>
+            </li>
+            <li class="dropdown" *ngIf="isPatientIn">
+                <a routerLink="/inf-medecin">Medecin</a>
+            </li>
+            <li class="dropdown" *ngIf="isPatientIn">
+                <a routerLink="/espace-patients">Vos espace</a>
+
+            </li>
+            <li class="dropdown" *ngIf="isPatientIn|| isMedecinIn">
+                <a routerLink="/video-call">chat</a>
+
+            </li>
+
+          <!--  <li>
+                {{userInfo.nom}}
+            </li>-->
+            <li class="dropdown" *ngIf="isMedecinIn">
+                <a routerLink="/medecin-page">Patient</a>
+            </li>
+            <li class="dropdown" *ngIf="isLaboratoireIn">
+                <a routerLink="/laboratoire-analyses">Espace Laboratoire</a>
+            </li>
+
+            <li class="dropdown" *ngIf="isPahamacieIn">
+                <a routerLink="/pharmacie-ordonnance">Espace Pharmacie</a>
+            </li>
+        </ul>
+
+        <a *ngIf="!isPatientIn && !isMedecinIn && !isPahamacieIn && !isLaboratoireIn" 
+           href="/choix" 
+           class="mediox-btn main-header__btn login-btn">
+            <span>Connexion</span>
+            <span class="mediox-btn__icon"><i class="bx bx-log-in"></i></span>
+        </a>
+
+        <div class="logout-section" *ngIf="userInfo">
+            <a>{{userInfo.nom}}</a>
+            <div>
+
+           
+            <i class="icon-logout"></i>
+            <a (click)="logout()">Déconnexion</a>
+             </div>
+            
+        </div>
+    </div>
+
+    
+        
+    
+</header>

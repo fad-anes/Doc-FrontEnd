@@ -1,0 +1,67 @@
+<app-layout>
+
+  <div class="card">
+      <div class="card-body">
+        <h4 class="header-title">Modifier Administrateur</h4>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+          <div class="mb-3">
+            <label for="firstName" class="form-label">Nom</label>
+            <input
+              type="text"
+              id="firstName"
+              formControlName="firstName"
+              class="form-control"
+              placeholder="Entrez le nom"
+            />
+            <div *ngIf="isInvalid('firstName')" class="text-danger">Nom requis</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Prénom</label>
+            <input
+              type="text"
+              id="lastName"
+              formControlName="lastName"
+              class="form-control"
+              placeholder="Entrez le prénom"
+            />
+            <div *ngIf="isInvalid('lastName')" class="text-danger">Prénom requis</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+              placeholder="exemple@gmail.com"
+            />
+           <div *ngIf="isInvalid('email')" class="text-danger">Email invalide</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="form-control"
+              placeholder="Entrez le mot de passe"
+            />
+            <div *ngIf="isInvalid('password')" class="text-danger">
+              Le mot de passe est obligatoire et doit contenir au moins 6 caractères.
+            </div>
+          </div>
+
+          
+
+          <button type="submit" class="btn btn-primary">Modifier</button>
+
+        </form>
+      </div> <!-- end card-body -->
+    </div>
+
+</app-layout>

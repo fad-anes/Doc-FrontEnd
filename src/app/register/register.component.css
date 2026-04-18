@@ -1,0 +1,76 @@
+/* 🔤 Font globale */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&display=swap');
+
+:host {
+  font-family: 'Manrope', sans-serif;
+}
+
+/* 🖼️ Overlay avec image */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: url('src/assets/front/images/logo-dark.png') no-repeat center center;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 🔲 Carte flottante */
+.role-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+  text-align: center;
+  min-width: 300px;
+}
+
+/* 📝 Titre */
+.role-box h2 {
+  color: #0a2241;
+  margin-bottom: 20px;
+}
+
+/* 🔘 Boutons */
+.role-box button {
+  display: block;
+  width: 220px;
+  margin: 10px auto;
+  padding: 12px;
+
+  background-color: #0a2241;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* hover */
+.role-box button:hover {
+  background-color: #33C1ED;
+  color: #0a2241;
+}
+
+/* 📦 Formulaire container */
+.form-container {
+  min-height: 100vh;
+
+  background: #f5f7fb;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}

@@ -1,0 +1,22 @@
+<div class="overlay" *ngIf="!selectedRole">
+  <div class="role-box">
+    <h2>Choisir votre type de compte</h2>
+
+    <button (click)="selectRole('DOCTOR')">Médecin</button>
+    <button (click)="selectRole('PATIENT')">Patient</button>
+    <button (click)="selectRole('PHARMACY')">Pharmacie</button>
+    <button (click)="selectRole('LABORATORY')">Laboratoire</button>
+  </div>
+</div>
+
+<div class="form-container">
+
+  <app-doctor-register *ngIf="selectedRole === 'DOCTOR'"></app-doctor-register>
+
+  <app-patient-register *ngIf="selectedRole === 'PATIENT'"></app-patient-register>
+
+  <app-pharmacy-register *ngIf="selectedRole === 'PHARMACY'"></app-pharmacy-register>
+
+  <app-laboratory-register *ngIf="selectedRole === 'LABORATORY'"></app-laboratory-register>
+
+</div>

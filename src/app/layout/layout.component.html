@@ -1,0 +1,106 @@
+<div class="wrapper">
+
+  <!-- 🔵 Sidebar -->
+  <div class="leftside-menu" [class.collapsed]="isSidebarCollapsed">
+
+    <div class="logo-box text-center">
+      <img src="assets/front/images/logo-dark.png" height="80">
+    </div>
+
+    <ul class="side-nav">
+
+      <li (click)="goTo('/dashboard')">
+        <i class="mdi mdi-view-dashboard"></i>
+        <span *ngIf="!isSidebarCollapsed">Dashboard</span>
+    </li>
+
+    <li (click)="goTo('/users')">
+    <i class="mdi mdi-account-group"></i>
+    <span *ngIf="!isSidebarCollapsed">Utilisateurs</span>
+    </li>
+
+    </ul>
+
+  </div>
+
+  <!-- 🔵 Content -->
+  <div class="content-page">
+
+    <!-- 🔷 HEADER -->
+    <div class="navbar-custom">
+
+      <!-- 🔹 Left -->
+      <div class="left-section">
+        
+
+        <button class="toggle-btn" (click)="toggleSidebar()">
+          ☰
+        </button>
+      </div>
+
+      <!-- 🔹 Right -->
+      <div class="right-section">
+
+        <!-- 🔔 Notifications -->
+        <div class="icon-box" (click)="toggleNotifications()">
+  <i class="mdi mdi-bell-outline"></i>
+
+  <span class="badge" *ngIf="unseenCount > 0">
+    {{ unseenCount }}
+  </span>
+
+  <div class="dropdown notif-dropdown" *ngIf="showNotifications">
+
+    <div class="dropdown-header">
+      Notifications ({{ notifications.length }})
+    </div>
+
+    <div class="dropdown-body">
+      <div class="notif-item" *ngFor="let n of notifications">
+
+        <div class="notif-content">
+          <p class="message">{{ n.message }}</p>
+          <span class="date">{{ n.createdAt }}</span>
+        </div>
+
+        <button class="delete-btn" (click)="deleteNotification(n.id)">✖</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <!-- 👤 Profile -->
+        <div class="icon-box" (click)="toggleProfileMenu()">
+          <span class="mdi mdi-face-man-profile"></span>  {{ user.firstName }} {{ user.lastName }} 
+
+            <div class="dropdown profile-dropdown" *ngIf="showProfileMenu">
+                <div class="profile-header">
+                {{ user.email }}
+                </div>
+
+                <div class="profile-item" (click)="goTo('/profile-admin')">
+                    <span class="mdi mdi-account"></span>
+                    Profile
+                </div>
+
+                <div class="profile-item logout" (click)="logout()">
+                    <span class="mdi mdi-logout"></span>
+                Déconnexion
+                </div>
+            </div>
+            </div>
+
+      </div>
+
+    </div>
+
+    <!-- 🔽 CONTENT -->
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+
+</div>

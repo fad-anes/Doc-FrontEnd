@@ -1,0 +1,222 @@
+
+.wrapper {
+  display: flex;
+}
+
+/* Sidebar */
+.leftside-menu {
+  width: 250px;
+  background: #0a2241;
+  color: white;
+  height: 100vh;
+  position: fixed;
+  transition: 0.3s;
+}
+
+.leftside-menu.collapsed {
+  width: 70px;
+}
+
+.side-nav {
+  list-style: none;
+  padding: 10px;
+}
+
+.side-nav a {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.side-nav i {
+  margin-right: 10px;
+}
+
+.leftside-menu.collapsed span {
+  display: none;
+}
+
+/* Content */
+.content-page {
+  margin-left: 250px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.leftside-menu.collapsed + .content-page {
+  margin-left: 70px;
+}
+
+/* Header */
+.navbar-custom {
+  height: 60px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+}
+
+/* Left section */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.toggle-btn {
+  font-size: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Right section */
+.right-section {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+/* Icons */
+.icon-box {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: #0a2241;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown p {
+  margin: 5px 0;
+}
+
+.email {
+  font-weight: bold;
+}
+
+/* Content */
+.content {
+  padding: 20px;
+}
+
+
+
+.icon-box:hover {
+  background: #f1f5f9;
+}
+
+
+
+
+
+/* Notifications */
+.dropdown-header {
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-body {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* Scrollbar */
+.dropdown-body::-webkit-scrollbar {
+  width: 6px;
+}
+.dropdown-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Notification item */
+.notif-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #f1f1f1;
+  transition: 0.2s;
+}
+
+.notif-item:hover {
+  background: #f9fafb;
+}
+
+.message {
+  font-size: 14px;
+  margin: 0;
+}
+
+.date {
+  font-size: 11px;
+  color: gray;
+}
+
+/* Delete button */
+.delete-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: red;
+}
+
+/* Profile */
+.profile-header {
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.profile-item:hover {
+  background: #f1f5f9;
+}
+
+
+
+/* Sidebar items */
+.side-nav li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.side-nav li:hover {
+  background: #33C1ED;
+  color: #0a2241;
+}

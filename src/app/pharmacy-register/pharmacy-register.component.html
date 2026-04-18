@@ -1,0 +1,119 @@
+<app-loader [loading]="isLoading"></app-loader>
+<section class="custom-cursor">
+    <div class="custom-cursor__cursor"></div>
+    <div class="custom-cursor__cursor-two"></div>
+    <div class="page-wrapper">
+        <section class="page-header">
+            <div class="container-fluid">
+                <div class="page-header__inner">
+                    <div class="page-header__bg" style="background-image: url(assets/front/images/backgrounds/page-header-bg.jpg);"></div><!-- /.page-header__bg -->
+                    <div class="container">
+                        <div class="page-header__content">
+                           
+                            <h2 class="page-header__title">Créez votre compte pharmacie</h2>
+                            <ul class="mediox-breadcrumb list-unstyled">
+                                <li>
+                                    <span class="mediox-breadcrumb__icon"><i class="icon-home"></i></span>
+                                    <a href="index.html">Acceuil</a>
+                                </li>
+                                <li><span>Créez votre compte</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="login-page section-space">
+            <div class="container">
+                <div class="row gutter-y-50 align-items-center">
+                    <div class="col-lg-6 p-0">
+                    <div class="login-page__image h-100">
+                        <div class="login-page__image__inner h-100">
+                        <img src="assets/front/images/resources/login-1-1.jpg" alt="login"
+                            class="img-fluid h-100 w-100 object-fit-cover">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center p-0">
+                    <form class="login-page__form w-100 px-4" [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                        <div class="login-page__form__inner w-100">
+
+                        <div class="login-page__form__top text-center mb-4">
+                            <img src="assets/front/images/logo-dark.png" alt="logo" width="164" class="login-page__form__logo mb-3">
+                            <h3 class="login-page__form__title">Bienvenue ! Créez votre compte</h3>
+                        </div>
+
+                        <div class="login-page__form__wrapp">
+
+                            <div class="login-page__form__input-box mb-3">
+                            <label for="nom" class="form-label">Nom</label>
+                            <input formControlName="name" type="text" id="nom" required placeholder="Tapez votre nom" class="form-control">
+                            <div *ngIf="isInvalid('name')" style="color: red;">Nom requis</div>
+                            </div>
+
+                        
+
+                            <div class="login-page__form__input-box mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input formControlName="email" type="email" id="email" required placeholder="Entrez votre email" class="form-control">
+                            <div *ngIf="isInvalid('email')" style="color: red;">Email invalide</div>
+                            </div>
+
+                            <div class="login-page__form__input-box mb-3">
+                            <label for="mp" class="form-label">Mot de passe</label>
+                            <input formControlName="password" type="password" required placeholder="Entrez votre mot de passe" class="form-control">
+                            <div *ngIf="isInvalid('password')" style="color: red;">
+                                Mot de passe min 6 caractères
+                            </div>
+                            </div>
+
+                            <div class="login-page__form__input-box mb-3">
+                            <label for="adress" class="form-label">Adresse</label>
+                            <input formControlName="address" type="text" id="adress" required placeholder="Entrez votre adress" class="form-control">
+                            <div *ngIf="isInvalid('address')" style="color: red;">Adresse requise</div>
+                            </div>
+
+                            <div class="login-page__form__input-box mb-3">
+                            <label for="telephone" class="form-label">Téléphone</label>
+                            <input formControlName="phone" type="tel" id="telephone" required placeholder="Entrez votre numéro de téléphone" class="form-control">
+                            <div *ngIf="isInvalid('phone')" style="color: red;">Téléphone requis</div>
+                            </div>
+
+                            <div class="login-page__form__input-box mb-3">
+                                <label for="image"class="formlabel">Image</label>
+                                <input  type="file" (change)="onFileSelected($event)"  class="form-control"/>
+                            </div>
+
+                            <div class="login-page__form__input-box login-page__form__input-box--3 mb-3">
+                            <label class="login-page__form__checked-box" for="remember-policy">
+                                <input type="checkbox" name="remember-policy" id="remember-policy">
+                                <span></span>
+                                J'accepte la politique de confidentialité de l'entreprise.
+                            </label>
+                            </div>
+                                <div *ngIf="errorMessage" class="error" style="color: red;">
+                                    {{ errorMessage }}
+                                </div>
+
+                                
+                                <div *ngIf="successMessage" class="success" style="color: green;">
+                                    {{ successMessage }}
+                                </div>
+                            <div class="login-page__form__input-box login-page__form__input-box--4">
+                            <button type="submit" class="login-page__form__btn mediox-btn mediox-btn--normal">Confirmer</button>
+                            </div>
+
+                        </div>
+
+                        <div class="login-page__form__bottom text-center mt-4">
+                            <p class="login-page__form__register-text">Vous avez déjà un compte? <a href="/login">Se connecter</a></p>
+                        </div>
+
+                        </div>
+                    </form>
+                    </div>
+
+  </div>
+</div>
+
+        </section><!-- /.login-page section-space -->

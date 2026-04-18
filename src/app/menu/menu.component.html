@@ -1,0 +1,194 @@
+ 
+ 
+ <div class="app-menu">  
+
+                <!-- Brand Logo -->
+                <div class="logo-box">
+                    <!-- Brand Logo Light -->
+                    <a href="index.html" class="logo-light">
+                        <img src="assets/back/images/logo.png" style="width: 70px; height:60px " alt="logo" class="logo-lg">
+                     
+                    </a>
+
+                    <!-- Brand Logo Dark -->
+                  <a href="index.html" class="logo-dark">
+                  <img src="assets/back/images/logo-dark.png" alt="dark logo" class="logo-lg">
+                   </a>
+
+                </div>
+
+                <!-- menu-left -->
+                <div class="scrollbar">
+
+                    <!-- User box -->
+                    <div class="user-box text-center">
+                        <img src="assets/back/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md">
+                        <div class="dropdown">
+                            <a href="javascript: void(0);" class="dropdown-toggle h5 mb-1 d-block" data-bs-toggle="dropdown">Geneva Kennedy</a>
+                            <div class="dropdown-menu user-pro-dropdown">
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-user me-1"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-settings me-1"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-lock me-1"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-log-out me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <p class="text-muted mb-0">Admin Head</p>
+                    </div>
+
+                    <!--- Menu -->
+                   <ul class="menu" style="margin-top: 50px;">
+ <li class="menu-item">
+  <a class="menu-link d-flex justify-content-between align-items-center"
+     href="javascript:void(0)"
+     (click)="toggleAdminMenu()">
+      <span>
+          <span class="menu-icon"><i class="fa-solid fa-user-shield"></i></span>
+          <span class="menu-text">Administrateurs</span>
+      </span>
+      <span class="">
+        <i class="fa-solid" [ngClass]="{'fa-chevron-down': !adminMenuOpen, 'fa-chevron-up': adminMenuOpen}"></i>
+      </span>
+  </a>
+
+  <ul class="list-unstyled ps-4" [ngClass]="{'collapse': true, 'show': adminMenuOpen}" id="adminSubMenu">
+      <li class="menu-item">
+          <a [routerLink]="['/ajouter-admin']" class="menu-link">Ajouter Admin</a>
+      </li>
+      <li class="menu-item">
+          <a [routerLink]="['/list-admin']" class="menu-link">Liste Admin</a>
+      </li>
+  </ul>
+</li>
+
+
+<li class="menu-item">
+  <a class="menu-link d-flex justify-content-between align-items-center"
+     href="javascript:void(0)"
+     (click)="togglePatientMenu()">
+      <span>
+          <span class="menu-icon"><i class="fa-solid fa-bed-pulse"></i></span>
+          <span class="menu-text">Patient</span>
+      </span>
+      <span class="">
+        <i class="fa-solid" [ngClass]="{'fa-chevron-down': !patientMenuOpen, 'fa-chevron-up': patientMenuOpen}"></i>
+      </span>
+  </a>
+
+  <ul class="list-unstyled ps-4" [ngClass]="{'collapse': true, 'show': patientMenuOpen}" id="patientSubMenu">
+      <li class="menu-item">
+          <a [routerLink]="['/ajouter-patient']" class="menu-link">Ajouter Patient</a>
+      </li>
+      <li class="menu-item">
+          <a [routerLink]="['/list-patient']" class="menu-link">Liste Patient</a>
+      </li>
+  </ul>
+</li>
+
+
+
+    <!-- Medecin -->
+    <li class="menu-item">
+  <a class="menu-link d-flex justify-content-between align-items-center"
+     href="javascript:void(0)"
+     (click)="toggleMedecinMenu()">
+      <span>
+          <span class="menu-icon"><i class="fa-solid fa-user-doctor"></i></span>
+          <span class="menu-text">Médecin</span>
+      </span>
+      <span class="">
+        <i class="fa-solid" [ngClass]="{'fa-chevron-down': !medecinMenuOpen, 'fa-chevron-up': medecinMenuOpen}"></i>
+      </span>
+  </a>
+
+  <ul class="list-unstyled ps-4" [ngClass]="{'collapse': true, 'show': medecinMenuOpen}" id="medecinSubMenu">
+      <li class="menu-item">
+          <a [routerLink]="['/ajouter-medecin']" class="menu-link">Ajouter Médecin</a>
+      </li>
+      <li class="menu-item">
+          <a [routerLink]="['/list-medecin']" class="menu-link">Liste Médecin</a>
+      </li>
+  </ul>
+</li>
+
+    <!-- laboratoire -->
+  <li class="menu-item">
+  <a class="menu-link d-flex justify-content-between align-items-center"
+     href="javascript:void(0)"
+     (click)="toggleLaboratoireMenu()">
+      <span>
+          <span class="menu-icon"><i class="fa-solid fa-flask-vial"></i></span>
+          <span class="menu-text">Laboratoire</span>
+      </span>
+      <span class="">
+        <i class="fa-solid" [ngClass]="{'fa-chevron-down': !laboratoireMenuOpen, 'fa-chevron-up': laboratoireMenuOpen}"></i>
+      </span>
+  </a>
+
+  <ul class="list-unstyled ps-4" [ngClass]="{'collapse': true, 'show': laboratoireMenuOpen}" id="laboratoireSubMenu">
+      <li class="menu-item">
+          <a [routerLink]="['/ajouter-laboratoire']" class="menu-link">Ajouter Laboratoire</a>
+      </li>
+      <li class="menu-item">
+          <a [routerLink]="['/list-laboratoire']" class="menu-link">Liste Laboratoire</a>
+      </li>
+  </ul>
+</li>
+
+    <!-- Pharmacie -->
+   <li class="menu-item">
+  <a class="menu-link d-flex justify-content-between align-items-center"
+     href="javascript:void(0)"
+     (click)="togglePharmacieMenu()">
+      <span>
+          <span class="menu-icon"><i class="fa-solid fa-prescription-bottle-medical"></i></span>
+          <span class="menu-text">Pharmacie</span>
+      </span>
+      <span class="">
+        <i class="fa-solid" [ngClass]="{'fa-chevron-down': !pharmacieMenuOpen, 'fa-chevron-up': pharmacieMenuOpen}"></i>
+      </span>
+  </a>
+
+  <ul class="list-unstyled ps-4" [ngClass]="{'collapse': true, 'show': pharmacieMenuOpen}" id="pharmacieSubMenu">
+      <li class="menu-item">
+          <a [routerLink]="['/ajouter-pharmacie']" class="menu-link">Ajouter Pharmacie</a>
+      </li>
+      <li class="menu-item">
+          <a [routerLink]="['/list-pharmacie']" class="menu-link">Liste Pharmacie</a>
+      </li>
+  </ul>
+</li>
+
+    <li class="menu-item">
+        <a href="/contact" class="menu-link">
+            <span class="menu-icon"><i class="fa-solid fa-message"></i></span>
+            <span class="menu-text">Message</span>
+            
+        </a>
+    </li>
+</ul>
+
+                    <!--- End Menu -->
+                    <div class="clearfix"></div>
+                </div>
+            </div>

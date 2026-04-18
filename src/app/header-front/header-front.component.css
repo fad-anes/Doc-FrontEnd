@@ -1,0 +1,160 @@
+/* === Top Blue Bar === */
+.custom-header .top-bar {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+
+  background-color: #0a2241;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+/* === Logo section === */
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-section i.icon-flask {
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.logo-text h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-text p {
+    margin: 0;
+    font-size: 13px;
+}
+
+/* === Navigation Bar === */
+.nav-bar {
+    background-color: white;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 10px 10px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    align-items: center; /* Aligne verticalement les éléments */
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.nav-item i {
+    margin-right: 6px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: #e7ebff;
+    color: #3e5bf5;
+}
+
+.nav-links a {
+    font-size: 16px; /* Taille du texte */
+    color: #333;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.nav-links a i {
+    margin-right: 8px; /* Espace entre l'icône et le texte */
+    font-size: 20px; /* Taille de l'icône */
+    color: #3e5bf5; /* Couleur de l'icône */
+}
+
+.nav-links a:hover {
+    color: #3e5bf5; /* Couleur du texte au survol */
+}
+
+.nav-links a:hover i {
+    color: #2f49c8; /* Couleur de l'icône au survol */
+}
+
+/* === Bouton Connexion === */
+.login-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #36c1ec;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+.login-btn:hover {
+    background-color: #2f4bd7;
+    color: white;
+}
+
+.login-btn .mediox-btn__icon {
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+/* === Bouton Déconnexion === */
+.logout-btn {
+    background-color: #f56b3d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.logout-btn:hover {
+    background-color: #e14a1d;
+}
+
+.logout-btn .mediox-btn__icon i {
+    font-size: 18px;
+}
+
+/* === Responsivité === */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
