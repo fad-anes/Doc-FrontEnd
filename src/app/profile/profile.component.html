@@ -1,0 +1,14 @@
+<section class="custom-cursor">
+    <app-header-front></app-header-front>
+     <section class="why-choose-one section-space-two">
+        <div class="container">
+            <div class="row guter-y-60">
+                <app-pofile-doctor *ngIf="role === 'DOCTOR'"></app-pofile-doctor>
+                <app-pofile-patient *ngIf="role === 'PATIENT'"></app-pofile-patient>
+                <app-pofile-pharma *ngIf="role === 'PHARMACY'"></app-pofile-pharma>
+                <app-pofile-lab *ngIf="role === 'LABORATORY'"></app-pofile-lab>    
+            </div>
+         </div>
+     </section>
+    <app-footer-front></app-footer-front>
+</section>

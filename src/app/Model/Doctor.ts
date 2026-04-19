@@ -7,5 +7,6 @@ export class Doctor{
     phone!: string;
     address!: string;
     img!: string;
+    speciality!: string;
     active!: boolean;
 }

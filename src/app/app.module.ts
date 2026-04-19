@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { FooterFrontComponent } from './footer-front/footer-front.component';
 import { HeaderFrontComponent } from './header-front/header-front.component';
 import { HeaderBackComponent } from './header-back/header-back.component';
-import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -22,6 +21,12 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { LoaderComponent } from './loader/loader.component';
 import { LayoutComponent } from './layout/layout.component';
 import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PofilePatientComponent } from './pofile-patient/pofile-patient.component';
+import { PofileDoctorComponent } from './pofile-doctor/pofile-doctor.component';
+import { PofileLabComponent } from './pofile-lab/pofile-lab.component';
+import { PofilePharmaComponent } from './pofile-pharma/pofile-pharma.component';
 
 
 
@@ -31,7 +36,6 @@ import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
     FooterFrontComponent,
     HeaderFrontComponent,
     HeaderBackComponent,
-    MenuComponent,
     LoginComponent,
     HomeComponent,
     RegisterComponent,
@@ -43,7 +47,13 @@ import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
     AcceuilComponent,
     LoaderComponent,
     LayoutComponent,
-    ProfileAdminComponent
+    ProfileAdminComponent,
+    ResetPasswordComponent,
+    ProfileComponent,
+    PofilePatientComponent,
+    PofileDoctorComponent,
+    PofileLabComponent,
+    PofilePharmaComponent
   ],
   schemas: [ NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ],
   imports: [

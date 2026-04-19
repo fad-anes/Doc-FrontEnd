@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
+import { Otp } from '../Model/Otp';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) {}
 
   getDetails(): any | null {
-    return { token: sessionStorage.getItem('currentUser'), email: sessionStorage.getItem('email'), role: sessionStorage.getItem('role'), id: sessionStorage.getItem('id') };
+    return { token: sessionStorage.getItem('currentUser'), email: sessionStorage.getItem('email'), role: sessionStorage.getItem('role'), id: sessionStorage.getItem('id'), name: sessionStorage.getItem('name') };
   }
 
   login(email: string, password: string) {
@@ -27,6 +28,7 @@ export class AuthService {
 
             sessionStorage.setItem('currentUser', token);
             sessionStorage.setItem('email', email);
+            sessionStorage.setItem('name', decoded.name);
             sessionStorage.setItem('role', decoded.role);
             sessionStorage.setItem('id', decoded.id);
             return decoded.role;
@@ -49,4 +51,11 @@ export class AuthService {
         return false
         }
    }
+
+   DemandCodeVerification(email: string): Observable<any>{
+    return this.http.put(`${this.apiUrl}/${email}`,null);
+    }
+    ChangePassword(otp:Otp): Observable<any>{
+        return this.http.post<any>(this.apiUrl+"/ResetPassword",otp);                 
+    }
 }

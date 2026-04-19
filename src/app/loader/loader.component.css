@@ -19,15 +19,17 @@
 .spinner {
   width: 60px;
   height: 60px;
-  border: 6px solid #004aad;
-  border-top: 6px solid #004aad;
+
+  border: 6px solid rgba(255, 255, 255, 0.2); 
+  border-top: 6px solid #33C1ED; 
+
   border-radius: 50%;
 
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }

@@ -1,0 +1,102 @@
+<form  [formGroup]="form" (ngSubmit)="onSubmit()">
+<div class="row align-items-center">
+<app-loader [loading]="isLoading"></app-loader> 
+  <div class="col-xl-6 wow fadeInLeft" data-wow-duration="1500ms">
+    <div class="why-choose-one__image">
+      <img [src]="getImageSrc()" (click)="fileInput.click()"
+           alt="why choose"
+           class="why-choose-one__image__one">
+           <input 
+    type="file" 
+    #fileInput 
+    hidden 
+    (change)="onFileSelected($event)"
+  >
+  <button 
+    *ngIf="selectedFile"
+    class="delete-btn"
+    (click)="DeleteFile()"
+  >
+    ✖
+  </button>
+    </div>
+  </div>
+
+  <div class="col-xl-6">
+    <div class="why-choose-one__content">
+
+      <div class="sec-title__top"> 
+        <img src="assets/front/images/shapes/sec-title-s-1-1.png" alt="why choose us" class="sec-title__img"> 
+        <h6 class="sec-title__tagline">Modifier votre profile</h6> 
+    </div>
+
+      <div style="border-radius: 20px; background-color: #0a2241; padding: 20px;">
+
+        <div class="appointment-one__form contact-form-validated form-one wow fadeInUp">
+            <div class="form-one__group" style="padding-bottom: 30px;"> 
+                <div class="form-one__control"> 
+                    <input type="text" formControlName="firstName" name="firstName" placeholder="Nom*"> 
+                    <div *ngIf="isInvalid('firstName')" class="text-danger">Nom requis</div>
+                </div> 
+
+                <div class="form-one__control"> 
+                    <input type="text" formControlName="lastName" name="lastName" placeholder="Prénom*"> 
+                    <div *ngIf="isInvalid('lastName')" class="text-danger">Prénom requis</div>
+                </div> 
+            </div> 
+            <div class="form-one__group" style="padding-bottom: 30px;"> 
+                <div class="form-one__control"> 
+                    <input type="email" formControlName="email" name="email" placeholder="Email Address*"> 
+                    <div *ngIf="isInvalid('email')" class="text-danger">Email requis</div>
+                </div> 
+                <div class="form-one__control"> 
+                    <input type="password" formControlName="password" name="password" placeholder="Mot de passe*"> 
+                    <div *ngIf="isInvalid('password')" class="text-danger">Mot de passe requis</div>
+                </div> 
+            </div> 
+            <div class="form-one__group" style="padding-bottom: 30px;"> 
+                <div class="form-one__control"> 
+                    <input type="tel" formControlName="phone" name="phone" placeholder="Phone Number"> 
+                    <div *ngIf="isInvalid('phone')" class="text-danger">Téléphone requis</div>
+                </div> 
+
+                <div class="form-one__control"> 
+                    <input type="tel" formControlName="address" name="address" placeholder="address"> 
+                    <div *ngIf="isInvalid('address')" class="text-danger">Adresse requise</div>
+                </div> 
+            </div>
+            <div class="form-one__group" style="padding-bottom: 20px;">
+                <div class="form-one__control">
+                    <select formControlName="speciality" class="selectPicker">
+                        <option value="" disabled selected>Choisissez votre spécialité</option>
+                        <option value="CARDIO">Cardiologie</option>
+                        <option value="DERMATO">Dermatologie</option>
+                        <option value="GASTRO">Gastro-entérologie</option>
+                        <option value="HEMATO">Hématologie</option>
+                        <option value="NEUROLO">Neurologie</option>
+                    </select>
+                </div>
+               
+            </div>
+            
+            <div *ngIf="errorMessage" class="error" style="color: red;">
+                {{ errorMessage }}
+            </div>
+            <div *ngIf="successMessage" class="success" style="color: green;">
+                {{ successMessage }}
+            </div>
+            <div class="form-one__control form-one__control--full"> 
+                <button type="submit" class="mediox-btn"> 
+                    <span>Confirmer</span> 
+                    <span class="mediox-btn__icon"><i class="icon-up-right-arrow"></i></span> 
+                </button> 
+            </div> 
+       
+</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+ </form>

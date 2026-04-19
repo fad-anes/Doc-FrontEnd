@@ -20,6 +20,7 @@ export class DoctorService {
         formData.append('email', doctor.email);
         formData.append('password', doctor.password);
         formData.append('phone', doctor.phone);
+        formData.append('speciality', doctor.speciality);
         formData.append('file', file);
         return this.http.post<any>(this.apiUrl+"/Add",formData);                 
     }
@@ -31,6 +32,7 @@ export class DoctorService {
         formData.append('email', doctor.email);
         formData.append('password', doctor.password);
         formData.append('phone', doctor.phone);
+        formData.append('speciality', doctor.speciality);
         formData.append('file', file);
         return this.http.put<any>(`${this.apiUrl}/UpdateWithImage/${doctor.id}`,formData);                 
     }

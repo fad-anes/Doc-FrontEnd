@@ -84,6 +84,18 @@
                             <input formControlName="phone" type="tel" id="telephone" required placeholder="Entrez votre numéro de téléphone" class="form-control">
                             <div *ngIf="isInvalid('phone')" style="color: red;">Téléphone requis</div>
                             </div>
+                            <div class="login-page__form__input-box mb-3">
+                            <label for="speciality" class="form-label">Spécialité</label>
+                            <select formControlName="speciality" class="form-control">
+                            <option value="" disabled selected>Choisissez votre spécialité</option>
+                            <option value="CARDIO">Cardiologie</option>
+                            <option value="DERMATO">Dermatologie</option>
+                            <option value="GASTRO">Gastro-entérologie</option>
+                            <option value="HEMATO">Hématologie</option>
+                            <option value="NEUROLO">Neurologie</option>
+                            </select>
+                            <div *ngIf="isInvalid('speciality')" style="color: red;">Spécialité requis</div>
+                            </div>
 
                             <div class="login-page__form__input-box mb-3">
                                 <label for="image"class="formlabel">Image</label>

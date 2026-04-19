@@ -27,7 +27,8 @@ export class DoctorRegisterComponent {
         address: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        phone: ['', [Validators.required]]
+        phone: ['', [Validators.required]],
+        speciality: ['', [Validators.required]]
       });
     }
 onFileSelected(event: any) {
@@ -65,7 +66,6 @@ onFileSelected(event: any) {
       }
       this.isLoading = true;
       const doctor: Doctor = this.form.value;
-  
       this.doctorService.AddDoctor(doctor, this.selectedFile).subscribe({
         next: (res) => {
           this.successMessage = 'Compte créé avec succès , veuillez attendre que l’administrateur confirme votre compte.✅';

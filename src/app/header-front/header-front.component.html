@@ -2,21 +2,25 @@
     <div class="top-bar">
         <div class="logo-section">
             <i class="icon-flask"></i>
-            <div class="footer-widget__logo logo-retina">
+            <div class="footer-widget__logo logo-retina" style="padding-top: 20px;">
                 <a href="index.html">
                     <img src="assets/front/images/logo-light.png" alt="Mediox HTML" width="164">
                 </a>
             </div>
         </div>
         <ul class="nav-links">
-            <li class="nav-item active">
-                <i class="icon-home"></i>
-                <a href="#">Accueil</a>
+            <li class="nav-item" routerLinkActive="active">
+                <a routerLink="/acceuil">Accueil</a>
             </li>
-            <li class="nav-item">
-                <i class="icon-info"></i>
-                <a href="about.html">Qui Sommes Nous</a>
+
+            <li class="nav-item " routerLinkActive="active">
+                <a routerLink="/profile">Profile</a>
             </li>
+
+             <li class="nav-item " routerLinkActive="active">
+                <a routerLink="/contact">contact</a>
+            </li>
+           
             <li class="nav-item">
                 <a routerLink="/contact">
                     <i class="bx bx-chat"></i> Contact
@@ -49,22 +53,10 @@
             </li>
         </ul>
 
-        <a *ngIf="!isPatientIn && !isMedecinIn && !isPahamacieIn && !isLaboratoireIn" 
-           href="/choix" 
-           class="mediox-btn main-header__btn login-btn">
-            <span>Connexion</span>
-            <span class="mediox-btn__icon"><i class="bx bx-log-in"></i></span>
-        </a>
+       
 
-        <div class="logout-section" *ngIf="userInfo">
-            <a>{{userInfo.nom}}</a>
-            <div>
-
-           
-            <i class="icon-logout"></i>
-            <a (click)="logout()">Déconnexion</a>
-             </div>
-            
+        <div class="logout-section" *ngIf="userInfo" style="padding-top: 30px;">
+            <button (click)="logout()" class="footer-widget__btn">Déconnexion</button>
         </div>
     </div>
 

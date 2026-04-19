@@ -1,0 +1,16 @@
+.selectPicker{
+width: 100%;
+  max-width: 633px;
+  height: 60px;
+  font-size: 16px;
+  line-height: 60px;
+  border: 1px solid transparent;
+  background-color: var(--mediox-white, #FFFFFF) !important;
+  border-radius: 10px;
+  color: #707882;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  position: relative;
+}
