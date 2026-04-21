@@ -1,0 +1,104 @@
+.prescription-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.prescription-card:hover {
+  transform: translateY(-5px);
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.patient-info h5 {
+  margin: 0;
+  color: #0a2241;
+}
+
+.patient-info small {
+  color: #777;
+}
+
+/* STATUS */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-badge.created {
+  background: #ffeaa7;
+  color: #d35400;
+}
+
+.status-badge.ready {
+  background: #d4f8e8;
+  color: #27ae60;
+}
+
+/* BODY */
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+  text-align: center;
+}
+
+.right img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+/* DESCRIPTION */
+.description {
+  color: #555;
+}
+
+/* DATE */
+.date {
+  color: #999;
+}
+
+/* FOOTER */
+.card-footer {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.btn-confirm {
+  background: #0a2241;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-confirm:hover {
+  background: #33C1ED;
+  color: #0a2241;
+}
+
+/* EMPTY */
+.empty-state {
+  text-align: center;
+  margin-top: 20px;
+}

@@ -1,0 +1,105 @@
+/* Wrapper full width */
+.table-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Table */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Header */
+.custom-table thead {
+  background: #0a2241;
+  color: #fff;
+}
+
+.custom-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Body */
+.custom-table td {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+/* Hover row */
+.custom-table tbody tr {
+  transition: 0.2s;
+}
+
+.custom-table tbody tr:hover {
+  background: #f5f9ff;
+}
+
+/* Image */
+.custom-table img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn-3d {
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-3d:hover {
+  transform: translateY(-2px);
+}
+
+/* Active button */
+.btn-light {
+  background: #d4f8e8;
+  color: #27ae60;
+  border: none;
+}
+
+/* Disabled button */
+.btn-secondary {
+  background: #ffeaa7;
+  color: #d35400;
+  border: none;
+}
+
+/* Delete */
+.btn-danger {
+  background: #ff6b6b;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #ff4d4d;
+}
+
+/* Empty row */
+.empty-row td {
+  text-align: center;
+  color: #888;
+  font-weight: 500;
+}
+
+.full-width {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}

@@ -2,6 +2,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
      "skipLibCheck": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

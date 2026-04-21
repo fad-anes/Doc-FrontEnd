@@ -1,0 +1,107 @@
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  min-width: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 300px;
+  text-align: center;
+}
+.actions button,
+.btn-confirm,
+.btn-cancel {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 60px;
+
+}
+.btn-confirm {
+  background: #0a2241;
+  color: white;
+}
+
+.btn-cancel {
+  background: gray;
+  color: white;
+}
+.card{
+  padding: 20px 20px;
+}
+.card:hover{
+  background-color: #0a2241;
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+  color: #0a2241;
+  margin-bottom: 20px;
+}
+
+/* Section patient */
+.section.patient {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section.patient h5 {
+  margin: 0;
+  color: #0a2241;
+}
+
+.section.patient small {
+  color: #777;
+}
+
+/* Content */
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+  text-align: right;
+}
+
+.right h5 {
+  color: #33C1ED;
+  margin-bottom: 5px;
+}
+
+/* Status */
+.status {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+/* Date */
+.date {
+  color: #888;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}

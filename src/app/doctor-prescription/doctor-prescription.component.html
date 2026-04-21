@@ -1,0 +1,87 @@
+<h3>💊 Ordonnances</h3>
+<app-loader [loading]="isLoading"></app-loader> 
+<div style="display: flex; justify-content: space-between;">
+    <div *ngIf="prescriptions.length === 0">
+    Aucune ordonnance
+    </div>
+    <button (click)="showPopupForm()" class="footer-widget__btn" style="background-color: #0a2241;">Ajouter</button>
+</div>
+
+
+<div *ngFor="let p of prescriptions" >
+    <div class="card" (click)="showPopupdetails(p)">
+        <h4>{{ p.patient.firstName }} {{ p.patient.lastName }}</h4>
+        <p>Description : {{ p.description }}</p>
+        <small>Date : {{ p.date }}</small>
+    </div>
+</div>
+
+<div class="popup" *ngIf="popupForm">
+    <div class="popup-content">
+        <h3>Ordonnance</h3>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" class="form-control"></textarea>
+                <div *ngIf="isInvalid('description')" class="text-danger">Description requise</div>
+            </div>
+            <div class="form-group" >
+                <label for="idPatient">Patient</label>
+                <select formControlName="idPatient" class="form-control" >
+                    <option value="" disabled selected>Choisissez le Patient</option>
+                    <option *ngFor="let p of patients" [value]="p.id">{{ p.firstName }} {{ p.lastName }}</option>
+                </select>
+                <div *ngIf="isInvalid('idPatient')" class="text-danger">Patient requis</div>
+            </div>
+            <div class="form-group" >
+                <label for="idPharmacy">Pharmacie</label>
+                <select formControlName="idPharmacy" class="form-control" >
+                    <option value="" disabled selected>Choisissez la Pharmacie</option>
+                    <option *ngFor="let p of pharmacys" [value]="p.id">{{ p.name }}</option>
+                </select>
+                <div *ngIf="isInvalid('idPharmacy')" class="text-danger">Pharmacie requis</div>
+            </div>
+            <div *ngIf="errorMessage" class="error" style="color: red;">
+                {{ errorMessage }}
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-confirm">Confirmer</button>
+                <button type="button" (click)="HidePopupForm()" class="btn-cancel">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="popup" *ngIf="popupDetails">
+  <div class="popup-content">
+    <h3 class="title">💊 Ordonnance</h3>
+    <div class="section patient">
+      <h5>{{ selectedPrescription.patient.firstName }} {{ selectedPrescription.patient.lastName }}</h5>
+      <small>{{ selectedPrescription.patient.email }}</small>
+    </div>
+    <div class="content">
+      <div class="left">
+        <p><strong>Description :</strong> {{ selectedPrescription.description }}</p>
+
+        <p class="status">
+          <strong>Status :</strong> {{ selectedPrescription.prescriptionStatus }}
+        </p>
+
+        <small class="date">
+          Date : {{ selectedPrescription.date }}
+        </small>
+      </div>
+      <div class="right">
+        <img alt="pharmacy" [src]="selectedPrescription.pharmacy.img" style="width: 80px;">
+        <h5>{{ selectedPrescription.pharmacy.name }}</h5>
+        <p>{{ selectedPrescription.pharmacy.email }}</p>
+      </div>
+
+    </div>
+    
+      <button type="button" (click)="HidePopupdetails()" class="btn-cancel">
+        Fermer
+      </button>
+    
+  </div>
+</div>

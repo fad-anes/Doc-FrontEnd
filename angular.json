@@ -97,7 +97,8 @@
             ],
             "styles": [
               "src/styles.css",
-               "src/assets/css/ton-style.css"
+              "node_modules/@fullcalendar/core/index.css",
+              "node_modules/@fullcalendar/daygrid/index.css"
               
             ],
             "scripts": [

@@ -1,0 +1,100 @@
+<h3>🧪 Test médicale</h3>
+<app-loader [loading]="isLoading"></app-loader> 
+<div style="display: flex; justify-content: space-between;">
+    <div *ngIf="medicalTests.length === 0">
+    Aucune Test médicale
+    </div>
+    <button (click)="showPopupForm()" class="footer-widget__btn" style="background-color: #0a2241;">Ajouter</button>
+</div>
+
+
+<div *ngFor="let p of medicalTests" >
+    <div class="card" (click)="showPopupdetails(p)">
+        <h4>{{ p.patient.firstName }} {{ p.patient.lastName }}</h4>
+        <p>Description : {{ p.description }}</p>
+        <small>Date : {{ p.date }}</small>
+    </div>
+</div>
+
+<div class="popup" *ngIf="popupForm">
+    <div class="popup-content">
+        <h3>Test médicale</h3>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" class="form-control"></textarea>
+                <div *ngIf="isInvalid('description')" class="text-danger">Description requise</div>
+            </div>
+            <div class="form-group" >
+                <label for="idPatient">Patient</label>
+                <select formControlName="idPatient" class="form-control" >
+                    <option value="" disabled selected>Choisissez le Patient</option>
+                    <option *ngFor="let p of patients" [value]="p.id">{{ p.firstName }} {{ p.lastName }}</option>
+                </select>
+                <div *ngIf="isInvalid('idPatient')" class="text-danger">Patient requis</div>
+            </div>
+            <div class="form-group" >
+                <label for="idLaboratory">Laboratoire</label>
+                <select formControlName="idLaboratory" class="form-control" >
+                    <option value="" disabled selected>Choisissez la Laboratoire</option>
+                    <option *ngFor="let p of laboratorys" [value]="p.id">{{ p.name }}</option>
+                </select>
+                <div *ngIf="isInvalid('idLaboratory')" class="text-danger">Laboratoire requis</div>
+            </div>
+            <div *ngIf="errorMessage" class="error" style="color: red;">
+                {{ errorMessage }}
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-confirm">Confirmer</button>
+                <button type="button" (click)="HidePopupForm()" class="btn-cancel">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="popup" *ngIf="popupDetails">
+  <div class="popup-content" style="min-width: 500px;">
+    <h3 class="title">🧪 Test médicale</h3>
+    <div class="section patient">
+      <h5>{{ selectedMedicalTest.patient.firstName }} {{ selectedMedicalTest.patient.lastName }}</h5>
+      <small>{{ selectedMedicalTest.patient.email }}</small>
+    </div>
+    <div class="content">
+      <div class="left">
+        <p><strong>Description :</strong> {{ selectedMedicalTest.description }}</p>
+        <div *ngIf="selectedMedicalTest.result!=null">
+          <p><strong>Resultat :</strong></p>
+          <img alt="pdf" src="assets/PDF_file_icon.svg.png" style="width: 60px; cursor: pointer;" (click)="showp(selectedMedicalTest.result)">
+        </div>
+        <p class="status">
+          <strong>Status :</strong> {{ selectedMedicalTest.testStatus }}
+        </p>
+
+        <small class="date">
+          Date : {{ selectedMedicalTest.date }}
+        </small>
+      </div>
+      <div class="right">
+        <img alt="pharmacy" [src]="selectedMedicalTest.laboratory.img" style="width: 80px;">
+        <h5>{{ selectedMedicalTest.laboratory.name }}</h5>
+        <p>{{ selectedMedicalTest.laboratory.email }}</p>
+      </div>
+
+    </div>
+    
+      <button type="button" (click)="HidePopupdetails()" class="btn-cancel">
+        Fermer
+      </button>
+    
+  </div>
+</div>
+<div class="popup" *ngIf="showPdf">
+    <div class="popup-content">
+        <iframe 
+            [src]="safePdfUrl"
+            width="100%" 
+            height="500px">
+        </iframe>
+        <button type="button" (click)="closesp()" class="btn-confirm">fermer</button>
+    </div>
+</div>

@@ -32,7 +32,7 @@ export class ProfileAdminComponent {
 
   this.isLoading = true;
 
-  this.adminService.retrieveAdmin(sessionStorage.getItem('email')!)
+  this.adminService.retrieveAdmin(localStorage.getItem('email')!)
     .subscribe((admin) => {
       this.ad = admin;
       this.form.patchValue({
@@ -61,7 +61,7 @@ export class ProfileAdminComponent {
       this.adminService.UpdateAdmin(admin).subscribe({
         next: (res) => {
           this.successMessage = 'Profil mis à jour avec succès !✅';
-          sessionStorage.setItem('email', this.form.get('email')?.value);
+          localStorage.setItem('email', this.form.get('email')?.value);
           this.isLoading=false;
           location.reload();
         },

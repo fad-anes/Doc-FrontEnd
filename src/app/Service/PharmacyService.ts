@@ -9,7 +9,7 @@ import { HttpClient  } from '@angular/common/http';
   })
 
 export class PharmacyService {
-    apiUrl = 'http://localhost:8085/api/pharmacy';
+    apiUrl = 'http://localhost:8085/pharmacy';
     constructor(private http: HttpClient, private router: Router) { }
 
     AddPharmacy(pharmacie:Pharmacy,file: File): Observable<any>{

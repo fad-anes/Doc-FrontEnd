@@ -32,7 +32,7 @@ export class PofilePharmaComponent {
             phone: ['', [Validators.required]]
           });
     
-          this.pharmacyService.retrievepharmacy(sessionStorage.getItem('email')!)
+          this.pharmacyService.retrievepharmacy(localStorage.getItem('email')!)
         .subscribe((pharmacy) => {
           this.pha = pharmacy;
           this.form.patchValue({
@@ -117,7 +117,7 @@ onSubmit() {
         this.pharmacyService.UpdatePharmacy(pharmacy).subscribe({
           next: (res) => {
             this.successMessage = 'Profil mis à jour avec succès !✅';
-            sessionStorage.setItem('email', this.form.get('email')?.value);
+            localStorage.setItem('email', this.form.get('email')?.value);
             this.isLoading=false;
             location.reload();
           },

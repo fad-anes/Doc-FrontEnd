@@ -1,0 +1,73 @@
+<app-loader [loading]="isLoading"></app-loader> 
+
+<section class="custom-cursor">
+  <app-header-front></app-header-front>
+
+  <section class="why-choose-one section-space-two">
+    <div class="container">
+      <div class="sec-title wow fadeInUp">
+        <div class="sec-title__top">
+          <img src="assets/front/images/shapes/sec-title-s-1-1.png" class="sec-title__img">
+          <h6 class="sec-title__tagline">Les Ordonnances</h6>
+        </div>
+
+        <div *ngIf="prescriptions.length === 0" class="empty-state">
+          <h5 class="sec-title__title">Vous n'avez pas d'ordonnance</h5>
+        </div>
+      </div>
+
+      <div class="row guter-y-30" *ngIf="prescriptions.length > 0">
+
+        <div class="col-xl-6" *ngFor="let p of prescriptions">
+          <div class="prescription-card wow fadeInUp">
+
+            <div class="card-header">
+              <div class="patient-info">
+                <h5>{{ p.patient.firstName }} {{ p.patient.lastName }}</h5>
+                <small>{{ p.patient.email }}</small>
+              </div>
+
+              <span class="status-badge"
+                    [ngClass]="{
+                      'created': p.prescriptionStatus === 'CREATED',
+                      'ready': p.prescriptionStatus === 'READY'
+                    }">
+                {{ p.prescriptionStatus }}
+              </span>
+            </div>
+
+            <div class="card-body">
+
+              <div class="left">
+                <p><strong>Description :</strong></p>
+                <p class="description">{{ p.description }}</p>
+
+                <small class="date">
+                  {{ p.date | date:'yyyy-MM-dd HH:mm' }}
+                </small>
+              </div>
+
+              <div class="right">
+                <img [src]="p.doctor.img" alt="doctor">
+                <h6>{{ p.doctor.firstName }} {{ p.doctor.lastName }}</h6>
+                <small>{{ p.doctor.email }}</small>
+              </div>
+
+            </div>
+
+            <div class="card-footer" *ngIf="ispharm && p.prescriptionStatus === 'CREATED'">
+              <button (click)="changeStatus(p.id)" class="btn-confirm">
+                Marquer comme prête
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <app-footer-front></app-footer-front>
+</section>

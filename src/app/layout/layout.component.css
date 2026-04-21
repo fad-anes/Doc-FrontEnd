@@ -211,7 +211,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px;
+  padding: 20px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -219,4 +219,33 @@
 .side-nav li:hover {
   background: #33C1ED;
   color: #0a2241;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  min-width: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.btn-cancel {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 60px;
+  background: gray;
+  color: white;
 }

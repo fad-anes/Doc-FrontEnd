@@ -1,0 +1,129 @@
+ <section class="custom-cursor">
+    <app-header-front></app-header-front>
+    <section class="why-choose-one section-space-two">
+        <div class="container">
+            <div class="row guter-y-60">
+                <div class="why-choose-one__content">
+                    <div class="sec-title @@extraClassName wow fadeInUp" data-wow-duration="1500ms">
+                        <div class="sec-title__top">
+                            <img src="assets/front/images/shapes/sec-title-s-1-1.png" alt="why choose us" class="sec-title__img">
+                            <h6 class="sec-title__tagline">Mes Discussions</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-wrapper">
+
+                <!-- SIDEBAR -->
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                    <h3>Discussions</h3>
+
+                    <button *ngIf="user.role=='PATIENT'"
+                            (click)="openAdd()"
+                            class="btn-add">
+                        + 
+                    </button>
+                    </div>
+
+                    <div *ngIf="discussions.length === 0" class="empty">
+                    Aucune discussion
+                    </div>
+
+                    <div *ngFor="let d of discussions"
+                        class="discussion-item"
+                        [class.active]="selectedDiscussion?.id === d.id"
+                        (click)="selectDiscussion(d)">
+
+                        <!-- Avatar -->
+                        <div class="avatar" *ngIf="!photoOuAvatar(d)">
+                            {{ getOtherName(d)[0] }}
+                        </div>
+
+                        <div class="avatar" *ngIf="photoOuAvatar(d)">
+                            <img alt="doctor" [src]="d.doctor.img" style="width: 35px; height: 35px; border-radius: 50%;">
+                        </div>
+
+                        <!-- Info -->
+                        <div class="info">
+                            <span class="name">{{ getOtherName(d) }}</span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="menu-wrapper" (click)="$event.stopPropagation()">
+                            <i class="fas fa-ellipsis-v" (click)="toggleMenu(d.id)"></i>
+
+                            <div class="dropdown" *ngIf="openMenuId === d.id">
+                                <div class="dropdown-item danger" (click)="deleteDiscussion(d.id)">
+                                    Supprimer
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CHAT -->
+                <div class="chat-area" *ngIf="selectedDiscussion">
+
+                    <!-- HEADER -->
+                    <div class="chat-header">
+                    
+                    <div class="avatar big" *ngIf="!photoOuAvatar(selectedDiscussion)">
+                        {{ getOtherName(selectedDiscussion)[0] }}
+                    </div>
+                    <div class="avatar big" *ngIf="photoOuAvatar(selectedDiscussion)">
+                        <img alt="doctor" [src]="selectedDiscussion.doctor.img" style="width: 45px; height: 45px; border-radius: 50%;">
+                    </div>
+                    <span>{{ getOtherName(selectedDiscussion) }}</span>
+                    </div>
+
+                    <!-- MESSAGES -->
+                    <div class="chat-body" id="chat-body">
+                    <div *ngFor="let m of messages"
+                        class="message"
+                        [ngClass]="{'mine': isMine(m), 'other': !isMine(m)}">
+
+                    <div class="bubble">
+
+                        <div class="text">
+                        {{ m.content }}
+                        </div>
+
+                        <div class="message-date">
+                        {{ m.createdAt | date:'HH:mm' }}
+                        </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- INPUT -->
+                    <div class="chat-input">
+                    <input [(ngModel)]="newMessage"
+                            placeholder="Écrire un message...">
+
+                    <button (click)="sendMessage()">➤</button>
+                    </div>
+
+                </div>
+
+                </div>
+
+                <!-- POPUP -->
+                <div class="popup" *ngIf="showAddPopup">
+                <div class="popup-content">
+                    <h3>Choisir un médecin</h3>
+
+                    <div *ngFor="let doc of doctors"
+                        class="doctor-item"
+                        (click)="createDiscussion(doc.id)">
+                    {{ doc.firstName }} {{ doc.lastName }}
+                    </div>
+
+                    <button (click)="showAddPopup=false" class="btn-add">Fermer</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-footer-front></app-footer-front>
+</section>

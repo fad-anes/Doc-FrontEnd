@@ -10,7 +10,7 @@ export class ProfileComponent implements OnInit{
    role!: string;
 
   ngOnInit(): void {
-    this.role = sessionStorage.getItem('role') || '';
+    this.role = localStorage.getItem('role') || '';
   }
 
 }

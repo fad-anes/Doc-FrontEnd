@@ -1,0 +1,17 @@
+.payment-result {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.btn-pay {
+  background: #0a2241;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-pay:hover {
+  background: #33C1ED;
+}

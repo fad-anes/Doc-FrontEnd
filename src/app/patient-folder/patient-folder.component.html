@@ -1,0 +1,60 @@
+<section class="custom-cursor">
+    <app-header-front></app-header-front>
+    <section class="why-choose-one section-space-two">
+        <div class="container">
+            <div class="row guter-y-60">
+                <div class="sec-title @@extraClassName wow fadeInUp" data-wow-duration="1500ms">
+                    <div class="sec-title__top">
+                        <img src="assets/front/images/shapes/sec-title-s-1-1.png" alt="why choose us" class="sec-title__img">
+                        <h6 class="sec-title__tagline">{{patient.firstName}} {{patient.lastName}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="folder-container">
+                <div class="folder-tabs">
+                    <div 
+                    class="tab" 
+                    [class.active]="activeTab === 'info'"
+                    (click)="setTab('info')">
+                    👤 Informations personnelles
+                    </div>
+
+                    <div 
+                    class="tab"
+                    [class.active]="activeTab === 'prescriptions'"
+                    (click)="setTab('prescriptions')">
+                    💊 Ordonnances
+                    </div>
+
+                    <div 
+                    class="tab"
+                    [class.active]="activeTab === 'tests'"
+                    (click)="setTab('tests')">
+                    🧪 Tests médicaux
+                    </div>
+
+                </div>
+
+                <div class="folder-content" [@tabAnimation]="activeTab">
+
+                    <app-patient-personal-info 
+                    *ngIf="activeTab === 'info'"
+                    [patient]="patient">
+                    </app-patient-personal-info>
+
+                    <app-doctor-prescription 
+                    *ngIf="activeTab === 'prescriptions'"
+                    [prescriptions]="prescriptions">
+                    </app-doctor-prescription>
+
+                    <app-doctor-medical-tests 
+                    *ngIf="activeTab === 'tests'"
+                    [medicalTests]="medicalTests">
+                    </app-doctor-medical-tests>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <app-footer-front></app-footer-front>
+</section>

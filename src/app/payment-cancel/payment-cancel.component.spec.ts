@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderBackComponent } from './header-back.component';
+import { PaymentCancelComponent } from './payment-cancel.component';
 
-describe('HeaderBackComponent', () => {
-  let component: HeaderBackComponent;
-  let fixture: ComponentFixture<HeaderBackComponent>;
+describe('PaymentCancelComponent', () => {
+  let component: PaymentCancelComponent;
+  let fixture: ComponentFixture<PaymentCancelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderBackComponent ]
+      declarations: [ PaymentCancelComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderBackComponent);
+    fixture = TestBed.createComponent(PaymentCancelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

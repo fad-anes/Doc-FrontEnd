@@ -1,0 +1,91 @@
+
+/* container */
+.container {
+  padding: 20px;
+}
+
+/* button */
+.btn-add {
+  background: #0a2241;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  margin-top: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 300px;
+  text-align: center;
+}
+
+.custom-date-input {
+  appearance: none;
+  -webkit-appearance: none;
+  color: #333;
+  font-family: "Helvetica", arial, sans-serif;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  outline: none;
+  width: 200px;
+}
+
+.custom-date-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+
+
+
+/* buttons */
+.actions button,
+.btn-confirm,
+.btn-cancel,
+.btn-edit,
+.btn-delete {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 60px;
+
+}
+
+.btn-confirm {
+  background: #0a2241;
+  color: white;
+}
+
+.btn-edit {
+  background: #0a2241;
+  color: white;
+}
+
+.btn-delete {
+  background: red;
+  color: white;
+}
+
+.btn-cancel {
+  background: gray;
+  color: white;
+}

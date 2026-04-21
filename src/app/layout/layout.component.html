@@ -14,9 +14,24 @@
         <span *ngIf="!isSidebarCollapsed">Dashboard</span>
     </li>
 
-    <li (click)="goTo('/users')">
-    <i class="mdi mdi-account-group"></i>
-    <span *ngIf="!isSidebarCollapsed">Utilisateurs</span>
+    <li (click)="goTo('/doctor-list')">
+      <i class="mdi mdi-doctor"></i>
+      <span *ngIf="!isSidebarCollapsed">Les Médecins</span>
+    </li>
+
+    <li (click)="goTo('/patient-list')">
+      <i class="mdi mdi-account-injury"></i>
+      <span *ngIf="!isSidebarCollapsed">Les Patients</span>
+    </li>
+
+    <li (click)="goTo('/lab-list')">
+      <i class="mdi mdi-test-tube"></i>
+      <span *ngIf="!isSidebarCollapsed">Les laboratoires</span>
+    </li>
+
+    <li (click)="goTo('/pharm-list')">
+      <i class="mdi mdi-medical-cotton-swab"></i>
+      <span *ngIf="!isSidebarCollapsed">Les pharmacies</span>
     </li>
 
     </ul>
@@ -43,33 +58,29 @@
 
         <!-- 🔔 Notifications -->
         <div class="icon-box" (click)="toggleNotifications()">
-  <i class="mdi mdi-bell-outline"></i>
-
-  <span class="badge" *ngIf="unseenCount > 0">
-    {{ unseenCount }}
-  </span>
-
-  <div class="dropdown notif-dropdown" *ngIf="showNotifications">
-
-    <div class="dropdown-header">
-      Notifications ({{ notifications.length }})
-    </div>
-
-    <div class="dropdown-body">
-      <div class="notif-item" *ngFor="let n of notifications">
-
-        <div class="notif-content">
-          <p class="message">{{ n.message }}</p>
-          <span class="date">{{ n.createdAt }}</span>
+          <i class="mdi mdi-bell-outline"></i>
+          <span class="badge" *ngIf="unseenCount > 0">
+            {{ unseenCount }}
+          </span>
+          <div class="dropdown notif-dropdown" *ngIf="showNotifications">
+            <div class="dropdown-header" style="display: flex; justify-content: space-between;">
+              <span>Notifications</span>
+              <span style="color: #40c4ed;">({{ notifications.length }})</span>   
+            </div>
+            <div class="dropdown-body">
+              <div *ngIf="notifications.length===0">
+                <p style="color: black;">Aucune notification à afficher.</p>
+              </div>
+              <div class="notif-item" *ngFor="let n of notifications">
+                <div class="notif-content" (click)="detailNot(n)">
+                  <p class="message">{{ n.message }}</p>
+                  <span class="date">{{ n.createdAt }}</span>
+                </div>
+                <button class="delete-btn" (click)="deleteNotification(n.id)">✖</button>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <button class="delete-btn" (click)="deleteNotification(n.id)">✖</button>
-
-      </div>
-    </div>
-
-  </div>
-</div>
 
         <!-- 👤 Profile -->
         <div class="icon-box" (click)="toggleProfileMenu()">
@@ -104,3 +115,17 @@
   </div>
 
 </div>
+ <div class="popup" *ngIf="showPopup">
+        <div class="popup-content">
+            <h3>Notification</h3>
+             <p>
+                {{ not.message}}
+            </p>
+             <p>
+                Date : {{ not.createdAt}}
+            </p>
+            <button class="btn-cancel" (click)="hidepoup()">
+                fermer
+            </button>
+        </div>
+    </div>

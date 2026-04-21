@@ -97,7 +97,7 @@ onSubmit() {
         this.laboratoryService.UpdateLaboratoryWithimage(laboratory, this.selectedFile).subscribe({
           next: (res) => {
             this.successMessage = 'Profil mis à jour avec succès !✅';
-            sessionStorage.setItem('email', this.form.get('email')?.value);
+            localStorage.setItem('email', this.form.get('email')?.value);
             this.isLoading=false;
             location.reload();
           },
@@ -116,7 +116,7 @@ onSubmit() {
         this.laboratoryService.UpdateLaboratory(laboratory).subscribe({
           next: (res) => {
             this.successMessage = 'Profil mis à jour avec succès !✅';
-            sessionStorage.setItem('email', this.form.get('email')?.value);
+            localStorage.setItem('email', this.form.get('email')?.value);
             this.isLoading=false;
             location.reload();
           },

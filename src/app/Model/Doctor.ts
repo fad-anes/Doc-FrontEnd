@@ -1,3 +1,5 @@
+import {DayOff} from '../Model/DayOff';
+import {Appointment} from '../Model/Appointment';
 export class Doctor{
     id!:number;
     firstName!: string;
@@ -9,4 +11,6 @@ export class Doctor{
     img!: string;
     speciality!: string;
     active!: boolean;
+    daysOffs!: DayOff[];
+    appointments!: Appointment[];
 }

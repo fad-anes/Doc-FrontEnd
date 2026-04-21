@@ -1,0 +1,53 @@
+<app-loader [loading]="isLoading"></app-loader> 
+<section class="custom-cursor">
+    <app-header-front></app-header-front>
+     <section class="why-choose-one section-space-two">
+        <div class="container">
+            <div class="row guter-y-60">
+                <full-calendar [options]="calendarOptions"></full-calendar>
+
+            </div>
+            <div class="popup" *ngIf="showAddPopup">
+                <div class="popup-content">
+                    <h3>Ajouter un Jour congé</h3>
+
+                    <p *ngIf="selectedDate">
+                    Date sélectionnée : {{ selectedDate | date:'yyyy-MM-dd' }}
+                    </p>
+
+                    <button (click)="addDayOff()" class="btn-confirm">
+                    Confirmer
+                    </button>
+
+                    <button (click)="showAddPopup=false" class="btn-cancel">
+                    Annuler
+                    </button>
+                </div>
+            </div>
+            <div class="popup" *ngIf="showEditPopup">
+                <div class="popup-content">
+                    <h3>Jour congé</h3>
+                    <p>
+                    Date : {{ selectedDate | date:'yyyy-MM-dd' }}
+                    </p>
+                    <input type="date" [(ngModel)]="newDateString" class="custom-date-input">
+                    <div class="actions">
+                        <button (click)="updateDayOff()" class="btn-edit">
+                            Modifier
+                        </button>
+
+                        <button (click)="deleteDayOff()" class="btn-delete">
+                            Supprimer
+                        </button>
+
+                        <button (click)="showEditPopup=false" class="btn-cancel">
+                            Fermer
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <app-footer-front></app-footer-front>
+</section>

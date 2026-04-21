@@ -9,7 +9,7 @@ import { HttpClient  } from '@angular/common/http';
   })
 
 export class LaboratoryService {
-    apiUrl = 'http://localhost:8085/api/laboratory';
+    apiUrl = 'http://localhost:8085/laboratory';
     constructor(private http: HttpClient, private router: Router) { }
 
     AddLaboratory(laboratory:Laboratory,file: File): Observable<any>{

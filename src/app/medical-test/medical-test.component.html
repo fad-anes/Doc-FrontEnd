@@ -1,0 +1,115 @@
+<app-loader [loading]="isLoading"></app-loader> 
+
+<section class="custom-cursor">
+  <app-header-front></app-header-front>
+
+  <section class="why-choose-one section-space-two">
+    <div class="container">
+      <div class="sec-title wow fadeInUp">
+        <div class="sec-title__top">
+          <img src="assets/front/images/shapes/sec-title-s-1-1.png" class="sec-title__img">
+          <h6 class="sec-title__tagline">Les Analyses</h6>
+        </div>
+
+        <div *ngIf="medicalTests.length === 0" class="empty-state">
+          <h5 class="sec-title__title">Vous n'avez pas d'Analyses</h5>
+        </div>
+      </div>
+
+      <div class="row guter-y-30" *ngIf="medicalTests.length > 0">
+
+        <div class="col-xl-6" *ngFor="let p of medicalTests">
+          <div class="prescription-card wow fadeInUp">
+
+            <div class="card-header">
+              <div class="patient-info">
+                <h5>{{ p.patient.firstName }} {{ p.patient.lastName }}</h5>
+                <small>{{ p.patient.email }}</small>
+              </div>
+
+              <span class="status-badge"
+                    [ngClass]="{
+                      'created': p.testStatus === 'CREATED',
+                      'ready': p.testStatus === 'READY'
+                    }">
+                {{ p.testStatus }}
+              </span>
+            </div>
+
+            <div class="card-body">
+
+              <div class="left">
+                <p><strong>Description :</strong></p>
+                <p class="description">{{ p.description }}</p>
+                <div *ngIf="p.result!=null">
+                    <p><strong>Resultat :</strong></p>
+                    <img alt="pdf" src="assets/PDF_file_icon.svg.png" style="width: 60px; cursor: pointer;" (click)="showp(p.result)">
+                </div>
+
+                <small class="date">
+                  Date : {{ p.date | date:'yyyy-MM-dd HH:mm' }}
+                </small>
+              </div>
+
+              <div class="right">
+                <img [src]="p.doctor.img" alt="doctor">
+                <h6>{{ p.doctor.firstName }} {{ p.doctor.lastName }}</h6>
+                <small>{{ p.doctor.email }}</small>
+              </div>
+
+            </div>
+
+            <div class="card-footer" *ngIf="isLabd && p.testStatus === 'CREATED'">
+              <button (click)="openPopup(p.id)" class="btn-confirm">
+                Terminer
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <div class="popup" *ngIf="showPoup">
+    <div class="popup-content">
+        <h3>Télécharger le fichier de résultat</h3>
+        <div class="upload-box" [class.active]="selectedFile">
+            <input 
+                type="file" 
+                (change)="onFileSelected($event)" 
+                id="fileInput"
+                hidden
+            />
+
+            <label for="fileInput" class="upload-label">
+                
+                <span *ngIf="!selectedFile">
+                📁 Choisir un fichier
+                </span>
+
+                <span *ngIf="selectedFile">
+                ✅ {{ selectedFile.name }}
+                </span>
+
+            </label>
+        </div>
+        <div style="justify-content: space-between; display: flex; padding-top: 5px;">
+            <button type="button" (click)="changeStatus()" class="btn-confirm">Confirmer</button>
+            <button type="button" (click)="ClosePoup()" class="btn-confirm">Cancel</button>
+        </div>
+    </div>
+  </div>
+  <div class="popup" *ngIf="showPdf">
+    <div class="popup-content">
+        <iframe 
+            [src]="safePdfUrl"
+            width="100%" 
+            height="500px">
+        </iframe>
+        <button type="button" (click)="closesp()" class="btn-confirm">fermer</button>
+    </div>
+</div>
+  <app-footer-front></app-footer-front>
+</section>

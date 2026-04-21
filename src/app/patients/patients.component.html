@@ -1,0 +1,39 @@
+ <section class="custom-cursor">
+    <app-header-front></app-header-front>
+    <section class="why-choose-one section-space-two">
+        <div class="container">
+            <div class="row guter-y-60">
+                <div class="why-choose-one__content">
+                    <div class="sec-title @@extraClassName wow fadeInUp" data-wow-duration="1500ms">
+                        <div class="sec-title__top">
+                            <img src="assets/front/images/shapes/sec-title-s-1-1.png" alt="why choose us" class="sec-title__img">
+                            <h6 class="sec-title__tagline">Mes Patients</h6>
+                        </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div *ngIf="patients.length === 0" style="color: #555;">
+                            <h5 class="sec-title__title">Vous n'avez pas des patients</h5>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="patients.length>0">
+                    <div class="why-choose-one__inner" *ngFor="let a of patients">
+                        <div class="why-choose-one__item wow fadeInUp" data-wow-duration="1500ms">
+                            <span class="why-choose-one__item__icon" style="cursor: pointer;">
+                                <i class="icon-doctor-1" ></i>
+                            </span>
+                            <div class="why-choose-one__item__content">
+                                <h4 class="why-choose-one__item__title">{{ a.firstName }} {{ a.lastName }}</h4>
+                                <qrcode 
+                                    [qrdata]="'http://localhost:4200/patient/' + a.id"
+                                    [width]="90">
+                                </qrcode>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <app-footer-front></app-footer-front>
+</section>

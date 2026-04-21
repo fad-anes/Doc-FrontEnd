@@ -34,7 +34,7 @@ export class PofileDoctorComponent {
         speciality: ['', [Validators.required]]
       });
 
-      this.doctorService.retrieveDoctor(sessionStorage.getItem('email')!)
+      this.doctorService.retrieveDoctor(localStorage.getItem('email')!)
     .subscribe((doctor) => {
       this.doc = doctor;
       this.form.patchValue({
@@ -102,7 +102,7 @@ onSubmit() {
         this.doctorService.UpdateDoctorWithimage(doctor, this.selectedFile).subscribe({
           next: (res) => {
             this.successMessage = 'Profil mis à jour avec succès !✅';
-            sessionStorage.setItem('email', this.form.get('email')?.value);
+            localStorage.setItem('email', this.form.get('email')?.value);
             this.isLoading=false;
             location.reload();
           },

@@ -4,7 +4,7 @@
             <i class="icon-flask"></i>
             <div class="footer-widget__logo logo-retina" style="padding-top: 20px;">
                 <a href="index.html">
-                    <img src="assets/front/images/logo-light.png" alt="Mediox HTML" width="164">
+                    <img src="assets/front/images/logo-dark.png" alt="Mediox HTML" width="80">
                 </a>
             </div>
         </div>
@@ -17,50 +17,90 @@
                 <a routerLink="/profile">Profile</a>
             </li>
 
-             <li class="nav-item " routerLinkActive="active">
-                <a routerLink="/contact">contact</a>
-            </li>
-           
-            <li class="nav-item">
-                <a routerLink="/contact">
-                    <i class="bx bx-chat"></i> Contact
-                </a>
-            </li>
-            <li class="dropdown" *ngIf="isPatientIn">
-                <a routerLink="/inf-medecin">Medecin</a>
-            </li>
-            <li class="dropdown" *ngIf="isPatientIn">
-                <a routerLink="/espace-patients">Vos espace</a>
-
-            </li>
-            <li class="dropdown" *ngIf="isPatientIn|| isMedecinIn">
-                <a routerLink="/video-call">chat</a>
-
+            <li class="nav-item " routerLinkActive="active" *ngIf="isMedecinIn">
+                <a routerLink="/day-off">Jour de congé</a>
             </li>
 
-          <!--  <li>
-                {{userInfo.nom}}
-            </li>-->
-            <li class="dropdown" *ngIf="isMedecinIn">
-                <a routerLink="/medecin-page">Patient</a>
+             <li class="nav-item " routerLinkActive="active" *ngIf="isMedecinIn||isPatientIn">
+                <a routerLink="/appointment">Mes rendez-vous</a>
             </li>
-            <li class="dropdown" *ngIf="isLaboratoireIn">
-                <a routerLink="/laboratoire-analyses">Espace Laboratoire</a>
+            <li class="nav-item " routerLinkActive="active" *ngIf="isMedecinIn">
+                <a routerLink="/Mes-Patients">Mes Patients</a>
             </li>
-
-            <li class="dropdown" *ngIf="isPahamacieIn">
-                <a routerLink="/pharmacie-ordonnance">Espace Pharmacie</a>
+            <li class="nav-item " routerLinkActive="active" *ngIf="isLaboratoireIn||isPatientIn">
+                <a routerLink="/MedicalTest">Les Analyses</a>
+            </li>
+            <li class="nav-item " routerLinkActive="active" *ngIf="isPahamacieIn||isPatientIn">
+                <a routerLink="/Prescription">Les ordonnances</a>
+            </li>
+            <li class="nav-item " routerLinkActive="active" *ngIf="isMedecinIn||isPatientIn">
+                <a routerLink="/chat">Disscution</a>
             </li>
         </ul>
+        <div class="logout-section" *ngIf="userInfo">
 
-       
+            <div class="logout-container">
 
-        <div class="logout-section" *ngIf="userInfo" style="padding-top: 30px;">
-            <button (click)="logout()" class="footer-widget__btn">Déconnexion</button>
-        </div>
+                <!-- 🔔 Notifications -->
+                <div class="icon-box" (click)="toggleNotifications()">
+                <i class="mdi mdi-bell-outline" style="color: #40c4ed;"></i>
+
+                <span class="badge" *ngIf="unseenCount > 0">
+                    {{ unseenCount }}
+                </span>
+
+                <div class="dropdown notif-dropdown" *ngIf="showNotifications">
+
+                    <div class="dropdown-header" style="display: flex; justify-content: space-between;">
+                        <span>Notifications</span>
+                        <span style="color: #40c4ed;">({{ notifications.length }})</span>
+                     
+                    </div>
+
+                    <div class="dropdown-body">
+                        <div *ngIf="notifications.length===0">
+                            <p style="color: black;">Aucune notification à afficher.</p>
+                        </div>
+                        <div class="notif-item" *ngFor="let n of notifications">
+                            <div class="notif-content" (click)="detailNot(n)">
+                                <p class="message">{{ n.message }}</p>
+                                <span class="date">{{ n.createdAt }}</span>
+                            </div>
+
+                            <button class="delete-btn" (click)="deleteNotification(n.id)">
+                            ✖
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+                </div>
+
+                <!-- 🚪 Logout -->
+                <button (click)="logout()" class="footer-widget__btn" style="margin-top: 30px;">
+                Déconnexion
+                </button>
+
+            </div>
+
+            </div>
     </div>
 
-    
+    <div class="popup" *ngIf="showPopup">
+        <div class="popup-content">
+            <h3>Notification</h3>
+             <p>
+                {{ not.message}}
+            </p>
+             <p>
+                Date : {{ not.createdAt}}
+            </p>
+            <button class="btn-cancel" (click)="hidepoup()">
+                fermer
+            </button>
+        </div>
+    </div>
         
     
 </header>

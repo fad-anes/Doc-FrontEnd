@@ -18,9 +18,11 @@ export class LayoutComponent {
   showProfileMenu = false;
   user!: any;
   notifications : Notification[] = [];
+  showPopup = false;
+  not!:Notification;
   
   ngOnInit() {
-    this.adminService.retrieveAdmin(sessionStorage.getItem('email')!).subscribe((admin) => {
+    this.adminService.retrieveAdmin(localStorage.getItem('email')!).subscribe((admin) => {
       this.user = admin;
       this.loadNotifications(admin.id, 'ADMIN');
     });
@@ -53,7 +55,12 @@ export class LayoutComponent {
   }
 
   deleteNotification(id: number) {
-    this.notifications = this.notifications.filter(n => n.id !== id);
+     this.notificationService.DeleteNotification(id).subscribe({
+      next: () => {
+        location.reload(); 
+      },
+      error: () => location.reload()
+    });
   }
 
   goTo(path: string) {
@@ -63,4 +70,20 @@ export class LayoutComponent {
   logout() {
     this.authService.logout();
   }
+  detailNot(n:Notification){
+  this.not=n;
+   this.notificationService.MarkSeen(n.id).subscribe({
+      next: () => {
+        this.loadNotifications(this.user.id, 'ADMIN');
+      },
+      error: () => {
+        this.loadNotifications(this.user.id, 'ADMIN');
+      }
+    });
+    this.showPopup=true;
+}
+hidepoup(){
+  this.showPopup=false;
+  this.not=null;
+}
 }

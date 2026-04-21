@@ -158,3 +158,138 @@
         gap: 10px;
     }
 }
+
+.logout-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+/* icone + badge */
+.icon-box {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Notifications */
+.dropdown-header {
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.dropdown-body {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+/* Scrollbar */
+.dropdown-body::-webkit-scrollbar {
+  width: 6px;
+}
+.dropdown-body::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Notification item */
+.notif-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #f1f1f1;
+  transition: 0.2s;
+}
+
+.notif-item:hover {
+  background: #f9fafb;
+}
+
+.message {
+  font-size: 14px;
+  margin: 0;
+  color: black;
+}
+
+.date {
+  font-size: 11px;
+  color: gray;
+}
+
+/* Delete button */
+.delete-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: red;
+}
+
+.icon-box {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: #0a2241;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown p {
+  margin: 5px 0;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  min-width: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  min-width: 300px;
+  text-align: center;
+}
+
+
+
+
+
+.btn-cancel {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 60px;
+  background: gray;
+  color: white;
+}
+

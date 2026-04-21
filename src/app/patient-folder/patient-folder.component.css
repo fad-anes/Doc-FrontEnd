@@ -1,0 +1,38 @@
+.folder-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
+  font-family: "Manrope", sans-serif;
+}
+
+.folder-tabs {
+  display: flex;
+  background: #0a2241;
+  padding: 10px;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 14px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.tab:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.tab.active {
+  background: #33C1ED;
+  color: #0a2241;
+  font-weight: bold;
+}
+
+.folder-content {
+  padding: 20px;
+  transition: all 0.3s ease;
+}

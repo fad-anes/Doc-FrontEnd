@@ -1,6 +1,8 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA,NO_ERRORS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  HttpClientModule} from '@angular/common/http';
 import { QRCodeModule } from 'angularx-qrcode';
@@ -8,7 +10,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { FooterFrontComponent } from './footer-front/footer-front.component';
 import { HeaderFrontComponent } from './header-front/header-front.component';
-import { HeaderBackComponent } from './header-back/header-back.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -27,6 +28,22 @@ import { PofilePatientComponent } from './pofile-patient/pofile-patient.componen
 import { PofileDoctorComponent } from './pofile-doctor/pofile-doctor.component';
 import { PofileLabComponent } from './pofile-lab/pofile-lab.component';
 import { PofilePharmaComponent } from './pofile-pharma/pofile-pharma.component';
+import { DayOffComponent } from './day-off/day-off.component';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
+import { PaymentCancelComponent } from './payment-cancel/payment-cancel.component';
+import { PatientsComponent } from './patients/patients.component';
+import { PatientFolderComponent } from './patient-folder/patient-folder.component';
+import { PatientPersonalInfoComponent } from './patient-personal-info/patient-personal-info.component';
+import { DoctorMedicalTestsComponent } from './doctor-medical-tests/doctor-medical-tests.component';
+import { DoctorPrescriptionComponent } from './doctor-prescription/doctor-prescription.component';
+import { MedicalTestComponent } from './medical-test/medical-test.component';
+import { PrescriptionComponent } from './prescription/prescription.component';
+import { DoctorsListComponent } from './doctors-list/doctors-list.component';
+import { PatientListComponent } from './patient-list/patient-list.component';
+import { LabsListComponent } from './labs-list/labs-list.component';
+import { PharmsListComponent } from './pharms-list/pharms-list.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -35,7 +52,6 @@ import { PofilePharmaComponent } from './pofile-pharma/pofile-pharma.component';
     AppComponent,
     FooterFrontComponent,
     HeaderFrontComponent,
-    HeaderBackComponent,
     LoginComponent,
     HomeComponent,
     RegisterComponent,
@@ -53,7 +69,23 @@ import { PofilePharmaComponent } from './pofile-pharma/pofile-pharma.component';
     PofilePatientComponent,
     PofileDoctorComponent,
     PofileLabComponent,
-    PofilePharmaComponent
+    PofilePharmaComponent,
+    DayOffComponent,
+    AppointmentComponent,
+    PaymentSuccessComponent,
+    PaymentCancelComponent,
+    PatientsComponent,
+    PatientFolderComponent,
+    PatientPersonalInfoComponent,
+    DoctorMedicalTestsComponent,
+    DoctorPrescriptionComponent,
+    MedicalTestComponent,
+    PrescriptionComponent,
+    DoctorsListComponent,
+    PatientListComponent,
+    LabsListComponent,
+    PharmsListComponent,
+    ChatComponent
   ],
   schemas: [ NO_ERRORS_SCHEMA,CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -63,7 +95,9 @@ import { PofilePharmaComponent } from './pofile-pharma/pofile-pharma.component';
     ReactiveFormsModule,
     HttpClientModule,
     QRCodeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FullCalendarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

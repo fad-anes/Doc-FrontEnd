@@ -29,7 +29,7 @@ constructor(
         phone: ['', [Validators.required]]
       });
 
-      this.patientService.retrievePatient(sessionStorage.getItem('email')!)
+      this.patientService.retrievePatient(localStorage.getItem('email')!)
     .subscribe((patient) => {
       this.pat = patient;
       this.form.patchValue({
@@ -58,7 +58,7 @@ constructor(
       this.patientService.UpdatePatient(patient).subscribe({
         next: (res) => {
           this.successMessage = 'Profil mis à jour avec succès !✅';
-          sessionStorage.setItem('email', this.form.get('email')?.value);
+          localStorage.setItem('email', this.form.get('email')?.value);
           this.isLoading=false;
           location.reload();
         },

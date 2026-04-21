@@ -1,6 +1,156 @@
 <app-layout>
 
-  <h1>Dashboard</h1>
-  <p>Bienvenue dans votre dashboard</p>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <h4 class="page-title">Dashboard</h4>
+          </div>
+        </div>
+      </div>     
+      <div class="row">
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/medecin.png" alt="Medecin" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{dto.nbrDoctors}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">total medecin</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div> 
+
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/patient.png" alt="Patient" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ dto.nbrPatients}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">total patient</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div> 
+
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/pharmacie.png" alt="Pharmacie" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{dto.nbrPharms}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">Total pharmacie</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div> 
+
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/laboratoire.png" alt="Laboratoire" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{dto.nbrLabs}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">Total Laboratoire</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div> 
+
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/rendez-vous.jpg" alt="Laboratoire" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{dto.nbrAppointments}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">Total Des rendez-vous</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/test.jpeg" alt="Laboratoire" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{dto.nbrMedicalTests}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">Total Des Analyses</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div>
+
+        <div class="col-md-6 col-xl-3">
+          <div class="widget-rounded-circle card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-6">
+                  <div class="avatar-lg rounded-circle bg-soft-primary border-primary border d-flex align-items-center justify-content-center overflow-hidden" style="width: 70px; height: 70px;">
+                    <img src="assets/back/images/ord.jpg" alt="Laboratoire" style="width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="text-end">
+                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{dto.nbrPrescriptions}}</span></h3>
+                    <p class="text-muted mb-1 text-truncate">Total Des ordonnances</p>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
 
 </app-layout>

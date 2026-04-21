@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Patient } from '../Model/Patient';
+import { DtoPatient } from '../Model/DtoPatient';
 import {  Observable } from 'rxjs';
 import { HttpClient  } from '@angular/common/http';
 
@@ -9,7 +10,7 @@ import { HttpClient  } from '@angular/common/http';
   })
 
 export class PatientService {
-    apiUrl = 'http://localhost:8085/api/patient';
+    apiUrl = 'http://localhost:8085/patient';
     constructor(private http: HttpClient, private router: Router) { }
 
     AddPatient(user:Patient): Observable<any>{
@@ -29,5 +30,11 @@ export class PatientService {
     }
     ChangeStatusPatient(id: number): Observable<any>{
         return this.http.put(`${this.apiUrl}/${id}`,null);
+    }
+    AllByDoctor(id:number): Observable<Patient[]>{
+        return this.http.get<Patient[]>(`${this.apiUrl}/AllByDoctor/${id}`);
+    }
+    PatientFolder(id:number): Observable<DtoPatient>{
+        return this.http.get<DtoPatient>(`${this.apiUrl}/PatientFolder/${id}`);
     }
 }

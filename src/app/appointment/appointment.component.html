@@ -1,0 +1,113 @@
+<app-loader [loading]="isLoading"></app-loader> 
+<section class="custom-cursor">
+    <app-header-front></app-header-front>
+    <section class="why-choose-one section-space-two">
+        <div class="container">
+            <div class="row guter-y-60">
+                <div class="why-choose-one__content">
+                    <div class="sec-title @@extraClassName wow fadeInUp" data-wow-duration="1500ms">
+                        <div class="sec-title__top">
+                            <img src="assets/front/images/shapes/sec-title-s-1-1.png" alt="why choose us" class="sec-title__img">
+                            <h6 class="sec-title__tagline">Mes Rendez-vous</h6>
+                        </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div *ngIf="appointments.length === 0" style="color: #555;">
+                            <h5 class="sec-title__title">Vous n'avez pas de rendez-vous à venir</h5>
+                        </div>
+                        <button *ngIf="isPatient" (click)="showPopupForm('ajout')" class="footer-widget__btn" style="background-color: #0a2241;">Ajouter un Rendez-vous</button>
+                    </div>
+                </div>
+                <div *ngIf="appointments.length>0">
+                    <div class="why-choose-one__inner" *ngFor="let a of appointments">
+                        <div class="why-choose-one__item wow fadeInUp" data-wow-duration="1500ms">
+                            <span class="why-choose-one__item__icon" style="cursor: pointer;" (click)="showPopupForm('modification', a)">
+                                <i class="icon-doctor-1" ></i>
+                            </span>
+                            <div class="why-choose-one__item__content">
+                                <h4 class="why-choose-one__item__title"*ngIf="isPatient">Medecin : {{ a.doctor.firstName }} {{ a.doctor.lastName }}</h4>
+                                <h4 class="why-choose-one__item__title"*ngIf="isPatient">Spécialité : {{ a.doctor.speciality }}</h4>
+                                <h4 class="why-choose-one__item__title"*ngIf="!isPatient">Patient : {{ a.patient.firstName }} {{ a.patient.lastName }}</h4>
+                                <p class="why-choose-one__item__text">consultation : {{ a.consultationMode }}</p>
+                                <p class="why-choose-one__item__text">Mode : {{ a.appointmentStatus }}</p>
+                                <p class="why-choose-one__item__text">Date : {{ a.date }}</p>
+                                <p class="why-choose-one__item__text" *ngIf="a.consultationMode=='EN_LIGNE'&&a.paid">lien-Meet: {{ a.lienVisio }}</p>
+                                <p class="why-choose-one__item__text" *ngIf="a.consultationMode=='EN_LIGNE'&&a.paid" style="color: rgb(86, 161, 86);">payé</p>
+                                <br/>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <button *ngIf="isPatient&&a.appointmentStatus=='ATT'" (click)="ChangeStatus(a.id,'ANN')" class="btn-delete">Annuler</button>
+                                    <button *ngIf="!isPatient&&a.appointmentStatus=='ATT'" (click)="ChangeStatus(a.id,'CAN')" class="btn-delete">Cancel</button>
+                                    <button *ngIf="!isPatient&&a.appointmentStatus=='ATT'" (click)="ChangeStatus(a.id,'CON')" class="btn-confirm">Confirmer</button>
+                                    <button
+                                    *ngIf="isPatient && a.consultationMode === 'EN_LIGNE' && !a.paid && a.appointmentStatus=='CON'"
+                                    (click)="pay(a.id)"
+                                    class="btn-pay">
+                                    Payer
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+              <div class="popup" *ngIf="showPopup">
+                <div class="popup-content">
+                    <h3>Rendez-vous</h3>
+
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="date">Date et Heure</label>
+                            <input type="datetime-local" id="date" formControlName="date" class="form-control">
+                            <div *ngIf="isInvalid('date')" class="text-danger">Date requise</div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label for="consultationMode">Mode de Consultation</label>
+                            <select id="consultationMode" formControlName="consultationMode" class="form-control">
+                                <option value="PHYSIQUE">Présentiel</option>
+                                <option value="EN_LIGNE">En ligne</option>
+                            </select>  
+                            <div *ngIf="isInvalid('consultationMode')" class="text-danger">Mode de consultation requis</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="speciality">Spécialité</label>
+                            <select 
+                            [(ngModel)]="speciality" 
+                            (change)="onSelectSpeciality()"
+                            [ngModelOptions]="{ standalone: true }"
+                            class="form-control">
+                                <option value="" disabled selected>Choisissez votre spécialité</option>
+                                <option value="CARDIO">Cardiologie</option>
+                                <option value="DERMATO">Dermatologie</option>
+                                <option value="GASTRO">Gastro-entérologie</option>
+                                <option value="HEMATO">Hématologie</option>
+                                <option value="NEUROLO">Neurologie</option>
+                            </select>  
+                            <div *ngIf="speciality==''" class="text-danger">Spécialité requise</div> 
+                        </div>
+                        <div class="form-group" *ngIf="speciality!=''">
+                            <label for="idDoctor">Médecin</label>
+                            <select formControlName="idDoctor" class="form-control" >
+                                <option value="" disabled selected>Choisissez votre médecin</option>
+                                <option *ngFor="let doc of ChosenDoctors" [value]="doc.id">{{ doc.firstName }} {{ doc.lastName }}</option>
+                            </select>
+                            <div *ngIf="isInvalid('idDoctor')" class="text-danger">Médecin requis</div>
+                        </div>
+                        <div *ngIf="errorMessage" class="error" style="color: red;">
+                            {{ errorMessage }}
+                        </div>
+                        <div *ngIf="successMessage" class="success" style="color: green;">
+                            {{ successMessage }}
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-confirm">Confirmer</button>
+                            <button type="button" (click)="hidePopup()" class="btn-cancel">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </section>
+    <app-footer-front></app-footer-front>
+</section>

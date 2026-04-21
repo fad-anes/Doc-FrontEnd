@@ -8,11 +8,11 @@ import { HttpClient  } from '@angular/common/http';
   })
 
 export class NotificationService {
-    apiUrl = 'http://localhost:8085/api/notification';
+    apiUrl = 'http://localhost:8085/notification';
     constructor(private http: HttpClient) { }
 
     MarkSeen(id:number): Observable<any>{
-        return this.http.put<any>(`${this.apiUrl}/seen/${id}`, null);                 
+        return this.http.put<any>(`${this.apiUrl}/${id}`, null);                 
     }
 
     getAllNotificationsByUser(id: number,type:string): Observable<Notification[]>{

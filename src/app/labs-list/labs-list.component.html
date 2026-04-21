@@ -1,0 +1,74 @@
+<app-loader [loading]="isLoading"></app-loader> 
+    <app-layout>
+        <div class="content-page">
+            <div class="content">
+                <div class="container-fluid full-width">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h2 class="mb-3">Liste des Laboratoirs</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-wrapper">
+                                <table class="custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Nom</th>
+                                            <th>Email</th>
+                                            <th>Addresse</th>
+                                            <th>Téléphone</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr *ngIf="laboratorys.length == 0" class="empty-row">
+                                        <td colspan="7">Il n'y a pas de Laboratoirs</td>
+                                        </tr>
+
+                                        <tr *ngFor="let doc of laboratorys">
+                                        <td><img [src]="doc.img" alt="doctor"></td>
+                                        <td>{{ doc.name }}</td>
+                                        <td>{{ doc.email }}</td>
+                                        <td>{{ doc.address }}</td>
+                                        <td>{{ doc.phone }}</td>
+
+                                        <td>
+                                            <div class="actions">
+
+                                            <button *ngIf="!doc.active"
+                                                    class="btn btn-sm btn-light btn-3d"
+                                                    (click)="OnChangeStatus(doc.id)">
+                                                <i class="fas fa-check"></i> Activé
+                                            </button>
+
+                                            <button *ngIf="doc.active"
+                                                    class="btn btn-sm btn-secondary btn-3d"
+                                                    (click)="OnChangeStatus(doc.id)">
+                                                <i class="fas fa-lock"></i> Désactivé
+                                            </button>
+
+                                            <button class="btn btn-sm btn-danger btn-3d"
+                                                    (click)="OnDelete(doc.id)">
+                                                <i class="fa fa-trash"></i> Supprimer
+                                            </button>
+
+                                            </div>
+                                        </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </app-layout>
+
