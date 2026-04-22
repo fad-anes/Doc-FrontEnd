@@ -44,11 +44,13 @@
 
                     <app-doctor-prescription 
                     *ngIf="activeTab === 'prescriptions'"
+                    [patient]="patient"
                     [prescriptions]="prescriptions">
                     </app-doctor-prescription>
 
                     <app-doctor-medical-tests 
                     *ngIf="activeTab === 'tests'"
+                    [patient]="patient"
                     [medicalTests]="medicalTests">
                     </app-doctor-medical-tests>
 

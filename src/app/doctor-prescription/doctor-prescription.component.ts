@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Prescription } from '../Model/Prescription';
-import { Patient } from '../Model/Patient';
 import { Pharmacy } from '../Model/Pharmacy';
 import { AuthService } from '../Service/AuthService';
 import { PrescriptionService } from '../Service/PrescriptionService';
-import { PatientService } from '../Service/PatientService';
 import { PharmacyService } from '../Service/PharmacyService';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DtoPatient } from '../Model/DtoPatient';
 
 @Component({
   selector: 'app-doctor-prescription',
@@ -15,8 +14,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class DoctorPrescriptionComponent {
   @Input() prescriptions: Prescription[];
+  @Input() patient: DtoPatient;
   selectedPrescription!: Prescription;
-  patients: Patient[] = [];
   pharmacys: Pharmacy[] = [];
   user!: any;
   form!: FormGroup;
@@ -28,28 +27,21 @@ export class DoctorPrescriptionComponent {
   constructor(
       private fb: FormBuilder,
       private prescriptionService: PrescriptionService,
-      private patientService: PatientService,
       private pharmacyService: PharmacyService,
       private authService: AuthService
     ) {}
 
     
    ngOnInit(): void {
+  
     this.user = this.authService.getDetails();
      this.form = this.fb.group({
       idPharmacy: ['', Validators.required],
-      idPatient: ['', Validators.required],
       description: ['', Validators.required]
     });
-    this.loadPatients();
     this.loadPharmacys();
   }
 
-  loadPatients() {
-    this.patientService.retrieveAllPatient().subscribe(res => {
-      this.patients = res;
-    });
-  }
   loadPharmacys() {
     this.pharmacyService.retrieveAllPharmacy().subscribe(res => {
       this.pharmacys = res;
@@ -78,7 +70,7 @@ export class DoctorPrescriptionComponent {
         return;
       }
       this.isLoading=true;
-      this.prescriptionService.AddPrescription(this.form.get('idPharmacy')?.value,this.form.get('idPatient')?.value,this.user.id,this.form.get('description')?.value).subscribe({
+      this.prescriptionService.AddPrescription(this.form.get('idPharmacy')?.value,this.patient.id,this.user.id,this.form.get('description')?.value).subscribe({
           next: (res) => {
             location.reload();
           },
